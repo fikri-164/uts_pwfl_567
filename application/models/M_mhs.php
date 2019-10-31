@@ -42,4 +42,11 @@ class M_mhs extends CI_Model {
 	public function hapus_mhs($id){
 		return $this->db->delete('mhs',array('id' =>$id));
 	}
+
+	public function ambildatanim($nim){
+		$this->db->where('nim', $nim);
+		$query = $this->db->get('log');
+		return $query->result_array();
+	}
+
 }

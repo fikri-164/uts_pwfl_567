@@ -10,6 +10,9 @@
 
 		<form action="<?php echo base_url('C_mhs/editmhs'); ?>" method="POST">
 			<tr>
+				<input type="hidden" value="<?php echo $itemmhs['id']; ?>" name="id"></input>
+			</tr>
+			<tr>
 				<td>NIM</td>
 				<td> : </td>
 				<td><input type="text" name="nim" value="<?php echo $itemmhs['nim']; ?>"></td>
@@ -24,20 +27,25 @@
 				<td> : </td>
 				<td>
 					<select name="jk">
-						<option value="Laki-laki" <?php echo $operasi == 'Laki-laki'?'selected':''?> >Laki-laki</option>
-						<option value="Perempuan" <?php echo $operasi == 'Perempuan'?'selected':''?> >Perempuan</option>
+						<option value="Laki-laki" <?php echo $itemmhs['jenis_kelamin'] == 'Laki-laki'?'selected':''?> >Laki-laki</option>
+						<option value="Perempuan" <?php echo $itemmhs['jenis_kelamin'] == 'Perempuan'?'selected':''?> >Perempuan</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<td>Alamat</td>
 				<td> : </td>
-				<td><input type="text" name="panjang" value="<?php echo $itemmhs['alamat']; ?>"></td>
+				<td><input type="text" name="alamat" value="<?php echo $itemmhs['alamat']; ?>"></td>
 			</tr>
 			<tr>
 				<td>No. Hp</td>
 				<td> : </td>
-				<td><input type="text" name="panjang" value="<?php echo $itemmhs['no_hp']; ?>"></td>
+				<td><input type="text" name="no_hp" value="<?php echo $itemmhs['no_hp']; ?>"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><input type="submit" value="Update" class="btn btn-primary"/><td>
 			</tr>
 		</form>
 		<?php  } ?>

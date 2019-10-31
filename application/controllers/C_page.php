@@ -20,4 +20,10 @@ class C_page extends CI_Controller {
 		$this->load->view('v_mhs_edit',$data);
 	}
 
+	public function riwayatmhs($nim)
+	{
+		$data['riwayat'] = $this->M_mhs->ambildatanim($nim);
+		$this->load->view('v_riwayat',$data);
+	}
+
 }

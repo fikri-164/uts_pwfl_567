@@ -33,7 +33,8 @@
 					<th><?php echo $itemmhs['no_hp']; ?></th>
 					<td align="center">
                         <a href="<?php echo base_url('C_page/editmhs/').$itemmhs['id']; ?>">Edit</a>
-                        <a href="<?php echo base_url('C_mhs/hapusmhs/').$itemmhs['id']; ?>">Hapus</a>
+                        <a href="<?php echo base_url('C_mhs/hapusmhs/').$itemmhs['id']; ?>" onclick="return confirm('Apakah Anda Yakin, Mau Menghapus data?')">Hapus</a>
+                        <a href="<?php echo base_url('C_page/riwayatmhs/').$itemmhs['nim']; ?>">Riwayat</a>
                     </td>
 				</tr>
 			</tbody>
