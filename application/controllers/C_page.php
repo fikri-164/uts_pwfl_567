@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -6,75 +5,86 @@ class C_page extends CI_Controller {
 
 	public function index()
 	{
+		
 		$data = array(
-            'dm' => $this->M_home->datamhs(), 
-            'lk' => $this->M_home->jmlhlk(), 
-            'pr' => $this->M_home->jmlhpr(), 
-        );
-		$this->load->view('template/v_header');
+			"title"	=> "Dashboard",
+			"home"	=> "class='nav-item active'",
+			"vmhs"	=> "class='nav-item'",
+			"vlog"	=> "class='nav-item'",
+			"dm" 	=> $this->M_home->datamhs(), 
+			"lk" 	=> $this->M_home->jmlhlk(), 
+			"pr" 	=> $this->M_home->jmlhpr(), 
+			);
+		$this->load->view('template/v_header',$data);
 		$this->load->view('v_dashboard',$data);
 		$this->load->view('template/v_footer');
 	}
-
-	public function mhs()
+		public function mhs()
 	{
-		$this->load->view('template/v_header');
-		$data['amhs'] = $this->M_mhs->ambilmhs();
+		$data = array(
+			"title"	=> "Data Mahasiswa",
+			"home"	=> "class='nav-item'",
+			"vmhs"	=> "class='nav-item active'",
+			"vlog"	=> "class='nav-item'",
+			"amhs" 	=> $this->M_mhs->ambilmhs(), 
+			);
+		$this->load->view('template/v_header',$data);
 		$this->load->view('v_mhs',$data);
 		$this->load->view('template/v_footer');
 	}
 
 	public function tambahmhs()
 	{
-		$this->load->view('template/v_header');
+		$data = array(
+			"title"	=> "Tambah Data Mahasiswa",
+			"home"	=> "class='nav-item'",
+			"vmhs"	=> "class='nav-item active'",
+			"vlog"	=> "class='nav-item'",
+			);
+		$this->load->view('template/v_header',$data);
 		$this->load->view('v_mhs_tambah');
 		$this->load->view('template/v_footer');
 	}
 
 	public function editmhs($id)
 	{
-		$this->load->view('template/v_header');
-		$data['aamhs'] = $this->M_mhs->editambilmhs($id);
+		$data = array(
+			"title"	=> "Edit Data Mahasiswa",
+			"home"	=> "class='nav-item'",
+			"vmhs"	=> "class='nav-item active'",
+			"vlog"	=> "class='nav-item'",
+			"aamhs" 	=> $this->M_mhs->editambilmhs($id), 
+			);
+		$this->load->view('template/v_header',$data);
 		$this->load->view('v_mhs_edit',$data);
 		$this->load->view('template/v_footer');
 	}
 
 	public function riwayatmhs($nim)
 	{
-		$this->load->view('template/v_header');
-		$data['riwayat'] = $this->M_mhs->ambildatanim($nim);
+		$data = array(
+			"title"	=> "Log Data Mahasiswa",
+			"home"	=> "class='nav-item'",
+			"vmhs"	=> "class='nav-item'",
+			"vlog"	=> "class='nav-item active'",
+			"riwayat" 	=> $this->M_mhs->ambildatanim($nim), 
+			);
+		$this->load->view('template/v_header',$data);
 		$this->load->view('v_riwayat',$data);
 		$this->load->view('template/v_footer');
 	}
 
-=======
-<?php 
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-class C_page extends CI_Controller {
-
-	public function index()
+	public function logmhs()
 	{
-		$data['amhs'] = $this->M_mhs->ambilmhs();
-		$this->load->view('v_mhs',$data);
-	}
-
-	public function tambahmhs()
-	{
-		$this->load->view('v_mhs_tambah');
-	}
-
-	public function editmhs($id)
-	{
-		$data['aamhs'] = $this->M_mhs->editambilmhs($id);
-		$this->load->view('v_mhs_edit',$data);
-	}
-
-	public function riwayatmhs($nim)
-	{
-		$data['riwayat'] = $this->M_mhs->ambildatanim($nim);
+		$data = array(
+			"title"	=> "Log Data Mahasiswa",
+			"home"	=> "class='nav-item'",
+			"vmhs"	=> "class='nav-item'",
+			"vlog"	=> "class='nav-item active'",
+			"riwayat" 	=> $this->M_mhs->ambillog(), 
+			);
+		$this->load->view('template/v_header',$data);
 		$this->load->view('v_riwayat',$data);
+		$this->load->view('template/v_footer');
 	}
-
->>>>>>> f61187f15a9e036df61543a699c67a3f5e884015
 }

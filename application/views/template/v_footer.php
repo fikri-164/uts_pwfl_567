@@ -43,3 +43,6 @@
     });
   });
 </script>
+<script>   
+  $('#notifications').slideDown('slow').delay(2000).slideUp('slow');
+</script>

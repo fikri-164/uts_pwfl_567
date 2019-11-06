@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content="#F6AE2D">
-  <title>UTS PEMROGRAMAN WEB FRAMEWORK LANJUT</title>
+  <title><?= $title ?> | UTS PEMROGRAMAN WEB FRAMEWORK LANJUT</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -38,9 +38,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="<?php echo base_url('C_page/');?>">Dashboard</a></li>
-            <li><a href="<?php echo base_url('C_page/mhs/');?>">Data Mahasiswa </a></li>
-  
+            <li <?= $home ?> ><a href="<?php echo base_url('C_page/');?>">Dashboard</a></li>
+            <li <?= $vmhs ?> ><a href="<?php echo base_url('C_page/mhs/');?>">Data Mahasiswa </a></li>
+            <li <?= $vlog ?> ><a href="<?php echo base_url('C_page/logmhs/');?>">LOG Mahasiswa </a></li>
           </ul>
           
         <!-- /.navbar-custom-menu -->

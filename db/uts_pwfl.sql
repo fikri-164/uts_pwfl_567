@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 03 Nov 2019 pada 13.55
+-- Generation Time: 06 Nov 2019 pada 10.27
 -- Versi Server: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -41,18 +41,7 @@ CREATE TABLE `log` (
 --
 
 INSERT INTO `log` (`id`, `nim`, `no_hp_lama`, `no_hp_baru`, `tgl_diubah`) VALUES
-(1, '161240000567', '085290156557', '085290156558', '2019-10-29 13:11:15'),
-(2, '161240000456', '09987654', '09987654557', '2019-10-31 11:09:43'),
-(3, '161240000456', '09987654557', '09987654557', '2019-10-31 11:19:11'),
-(4, '161240000567', '085290156558', '085290156557', '2019-11-01 07:27:13'),
-(5, '161240000459', '08532453678', '08532453678', '2019-11-01 08:13:58'),
-(6, '161240000459', '08532453678', '08532453677', '2019-11-01 08:21:06'),
-(7, '161240000469', '085345632765', '085345632760', '2019-11-01 08:25:45'),
-(8, '161240000567', '085290156557', '085290156557', '2019-11-03 19:54:30'),
-(9, '161240000555', '08533456789', '08533456789', '2019-11-03 19:54:36'),
-(10, '161240000459', '08532453677', '08532453677', '2019-11-03 19:54:41'),
-(11, '161240000589', '087655488766', '087655488766', '2019-11-03 19:54:46'),
-(12, '161240000469', '085345632760', '085345632760', '2019-11-03 19:54:52');
+(1, '161240000567', '085290156557', '0852901565578', '2019-11-05 00:05:18');
 
 -- --------------------------------------------------------
 
@@ -74,7 +63,7 @@ CREATE TABLE `mhs` (
 --
 
 INSERT INTO `mhs` (`id`, `nim`, `nama_mhs`, `jenis_kelamin`, `alamat`, `no_hp`) VALUES
-(1, '161240000567', 'Ah. Hasan Umam Fikri', 'Laki-laki', 'Kepuk Bangsri Jepara', '085290156557'),
+(1, '161240000567', 'Ahmad Hasan Umam Fikri', 'Laki-laki', 'Kepuk Bangsri Jepara', '0852901565578'),
 (2, '161240000555', 'Cahya Setyowati', 'Perempuan', 'Pati', '08533456789'),
 (3, '161240000459', 'Muhammad Shihab Kafibaih', 'Laki-laki', 'Bulungan Pakis Aji Jepara', '08532453677'),
 (4, '161240000589', 'Desi Amelina Suryani', 'Perempuan', 'Kedung Leper Bangsri Jepara', '087655488766'),
@@ -84,11 +73,12 @@ INSERT INTO `mhs` (`id`, `nim`, `nama_mhs`, `jenis_kelamin`, `alamat`, `no_hp`) 
 -- Trigger `mhs`
 --
 DELIMITER $$
-CREATE TRIGGER `riwayat_no_hp` BEFORE UPDATE ON `mhs` FOR EACH ROW INSERT INTO log
-SET nim = old.nim,
-no_hp_lama = old.no_hp,
-no_hp_baru = new.no_hp,
-tgl_diubah = NOW()
+CREATE TRIGGER `riwayat_no_hp` AFTER UPDATE ON `mhs` FOR EACH ROW BEGIN
+IF (NEW.no_hp != OLD.no_hp) THEN
+INSERT INTO log (nim, no_hp_lama, no_hp_baru, tgl_diubah)
+VALUES (old.nim, old.no_hp, new.no_hp, NOW());
+END IF;
+END
 $$
 DELIMITER ;
 
@@ -140,13 +130,13 @@ ALTER TABLE `mhs`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `mhs`
 --
 ALTER TABLE `mhs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

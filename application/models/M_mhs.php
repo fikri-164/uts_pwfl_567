@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_mhs extends CI_Model {
 	public function ambilmhs(){
-		$query = $this->db->get('mhs');
+		$query = $this->db->get('tampil');
 		return $query->result_array();
 	}
  
@@ -50,57 +49,9 @@ class M_mhs extends CI_Model {
 		return $query->result_array();
 	}
 
-=======
-<?php 
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-class M_mhs extends CI_Model {
-	public function ambilmhs(){
-		$query = $this->db->get('mhs');
-		return $query->result_array();
-	}
- 
-	public function editambilmhs($id){
-		$this->db->where('id', $id);
-		$query = $this->db->get('mhs');
-		return $query->result_array();
-	}
-
-	public function tambah_mhs()
-	{
-		$data = array(
-			'nim' => $this->input->post('nim'),
-			'nama_mhs' => $this->input->post('nama'),
-			'jenis_kelamin' => $this->input->post('jk'),
-			'alamat' => $this->input->post('alamat'),
-			'no_hp' => $this->input->post('no_hp')
-		);
-		return $this->db->insert('mhs',$data);
-	}
-
-	public function edit_mhs()
-	{
-		$data = array(
-			'nim' => $this->input->post('nim'),
-			'nama_mhs' => $this->input->post('nama'),
-			'jenis_kelamin' => $this->input->post('jk'),
-			'alamat' => $this->input->post('alamat'),
-			'no_hp' => $this->input->post('no_hp')
-		);
-		$id_surat_lama = $this->input->post('id');
-		$this->db->where('id', $id_surat_lama);
-		return $this->db->update('mhs',$data);
-	}
-
-	public function hapus_mhs($id){
-		return $this->db->delete('mhs',array('id' =>$id));
-	}
-
-	public function ambildatanim($nim){
-		$this->db->where('nim', $nim);
+	public function ambillog(){
 		$query = $this->db->get('log');
 		return $query->result_array();
 	}
 
->>>>>>> f61187f15a9e036df61543a699c67a3f5e884015
 }
