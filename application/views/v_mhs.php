@@ -23,7 +23,7 @@
 						<th>Jenis Kelamin</th>
 						<th>Alamat</th>
 						<th>No. Hp</th>
-						<th width="140">Action</th>
+						<th width="180">Action</th>
 					</tr>	
 				<?php  $no = 1; foreach ($amhs as $itemmhs ) {?>
 				</thead>
@@ -41,7 +41,7 @@
 
 							<a href="<?php echo base_url('C_mhs/hapusmhs/').$itemmhs['id']; ?>" onclick="return confirm('Apakah Anda Yakin, Mau Menghapus data?')" class="btn btn-flat btn-danger btn-sm"><span class="fa fa-trash"></span></a>
 
-							<a href="<?php echo base_url('C_page/riwayatmhs/').$itemmhs['nim']; ?>" class="btn btn-flat btn-warning btn-sm"><span class="fa fa-eye">Riwayat</span></a>
+							<a href="<?php echo base_url('C_page/riwayatmhs/').$itemmhs['nim']; ?>" class="btn btn-flat btn-warning btn-sm"><span class="fa fa-eye">Log</span></a>
 	                    </td>
 					</tr>
 				
