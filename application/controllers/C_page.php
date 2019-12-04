@@ -17,7 +17,7 @@ class C_page extends CI_Controller {
 			);
 		$this->load->view('template/v_header',$data);
 		$this->load->view('v_dashboard',$data);
-		$this->load->view('template/v_footer');
+		$this->load->view('template/v_footer2');
 	}
 		public function mhs()
 	{
